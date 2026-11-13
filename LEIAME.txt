@@ -1,0 +1,33 @@
+TORRE DE TOALHAS - JOGO LUTEX
+=============================
+
+Arquivo principal: index.html
+O jogo é um arquivo único: o logo, os estilos e o código já estão dentro dele.
+Não precisa de banco de dados nem de servidor especial.
+
+COMO COLOCAR NO SITE
+--------------------
+
+Opção 1 - Página própria (recomendado)
+  Envie o index.html para uma pasta do site, por exemplo:
+    www.lojaslutex.com.br/jogo/index.html
+  O jogo fica disponível em www.lojaslutex.com.br/jogo
+
+Opção 2 - Dentro de uma página que já existe
+  Depois de fazer a opção 1, cole este código onde o jogo deve aparecer:
+
+    <iframe src="/jogo/" title="Torre de Toalhas - Lutex"
+            style="width:100%;max-width:480px;height:720px;border:0;display:block;margin:0 auto">
+    </iframe>
+
+Plataformas de e-commerce (VTEX, Nuvemshop, Tray, Shopify etc.) normalmente
+não aceitam subir um arquivo .html solto. Nesses casos, peça para quem cuida
+da loja hospedar o index.html (pode ser num subdomínio, como jogo.lojaslutex.com.br)
+e use a opção 2 para mostrar o jogo dentro da loja.
+
+OBSERVAÇÕES
+-----------
+- As fontes (Fredoka e Nunito Sans) vêm do Google Fonts. Sem internet, o jogo
+  usa fontes do sistema e continua funcionando.
+- O recorde fica salvo no navegador de cada jogador.
+- Os arquivos lutex-logo-*.png são só cópias do logo recortado, caso precisem.
