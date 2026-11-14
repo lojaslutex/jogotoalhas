@@ -291,7 +291,7 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
         <p>Toque na tela para soltar cada peça em cima da pilha. O que ficar para fora é cortado, então capriche no alinhamento.</p>
       </div>
       <ul class="levels" aria-label="Níveis">
-        <li>Toalhas</li><li>Lençóis</li><li>Cobertores</li><li>Enxoval completo</li><li class="gold">Encaixe perfeito vale 2×</li><li class="gold">Peças de parceiros valem 2×</li>
+        <li>Toalhas</li><li>Lençóis</li><li>Cobertores</li><li>Enxoval completo</li><li class="gold">Encaixes perfeitos seguidos: +2, +3, +4…</li><li class="gold">Peças de parceiros valem 2×</li>
       </ul>
       <div class="gift">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
@@ -587,13 +587,13 @@ const PARTNERS = [
       tone(200, .09, 'triangle', .16);
     }
 
-    // perfect drops are worth double
-    const gained = cur.special ? SPECIAL.points : perfect ? 2 : 1;
+    // perfect drops in a row are worth more each time: 2, 3, 4... (a normal drop resets to 1)
+    const gained = cur.special ? SPECIAL.points : perfect ? combo + 1 : 1;
     if (cur.special) {
       toast(`+2 pontos · ${PARTNERS[cur.partner].name}`);
       tone(988, .22, 'sine', .12);
     } else if (perfect) {
-      toast(combo >= 2 ? `Dobra perfeita ×${combo} · +2` : 'Dobra perfeita! +2');
+      toast(combo >= 2 ? `Dobra perfeita ×${combo} · +${gained}` : `Dobra perfeita! +${gained}`);
     }
 
     stack.push({ type: cur.type, special: cur.special, partner: cur.partner, color: cur.color, h: cur.h, x, w, y: topY, flash: perfect || cur.special ? 1 : 0 });
@@ -747,8 +747,12 @@ const PARTNERS = [
       $('coupon').hidden = false;
       $('coupon').scrollIntoView({ block: 'nearest', behavior: reduceMotion ? 'auto' : 'smooth' });
     } catch (err) {
-      msg.textContent = 'Não foi possível salvar agora. Tente de novo em instantes.'; msg.classList.add('err');
+      msg.textContent = 'Não foi possível salvar no ranking agora, mas seu presente está garantido. Tente salvar de novo em instantes.'; msg.classList.add('err');
       $('save-btn').disabled = false; $('player-name').disabled = false;
+      // the coupon never depends on the ranking server
+      store.set('lutex-torre-nome', nome);
+      $('coupon').hidden = false;
+      $('coupon').scrollIntoView({ block: 'nearest', behavior: reduceMotion ? 'auto' : 'smooth' });
     }
   });
 

@@ -9,7 +9,7 @@
 
 const ABA = 'Ranking';
 const LIMITE = 10;            // quantas posições o jogo mostra
-const MAX_PONTOS = 3000;      // trava contra valores absurdos
+const MAX_PONTOS = 50000;     // trava contra valores absurdos
 
 function doGet() {
   return resposta({ ok: true, top: topN() });
@@ -29,7 +29,8 @@ function doPost(e) {
 
     if (nome.replace(/^'/, '').length < 2) return resposta({ ok: false, erro: 'nome' });
     const valido = pontos >= 1 && pontos <= MAX_PONTOS &&
-                   pecas >= 1 && pontos >= pecas && pontos <= pecas * 2 &&
+                   // máximo possível: todas as peças perfeitas em sequência (2 + 3 + 4 + ...)
+                   pecas >= 1 && pontos >= pecas && pontos <= pecas * (pecas + 3) / 2 &&
                    altura >= 0 && altura <= pecas * 10;
     if (!valido) return resposta({ ok: false, erro: 'dados' });
 
