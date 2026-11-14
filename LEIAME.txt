@@ -1,33 +1,23 @@
 TORRE DE TOALHAS - JOGO LUTEX
 =============================
 
-Arquivo principal: index.html
-O jogo é um arquivo único: o logo, os estilos e o código já estão dentro dele.
-Não precisa de banco de dados nem de servidor especial.
+Site: https://lojaslutex.github.io/jogotoalhas/
 
-COMO COLOCAR NO SITE
---------------------
+ARQUIVOS
+--------
+- index.html ............ o jogo (configurações no começo do script: RANKING_URL e PARTNERS)
+- lutex-logo-white.png .. logo usado no topo e na base da pilha
+- lutex-logo-coral.png .. cópia do logo para outros usos
+- previa-jogo.png ....... imagem de prévia (página da Nuvemshop e compartilhamentos)
+- parceiros/ ............ logos das marcas parceiras das peças especiais (veja parceiros/LEIAME.md)
+- ranking/ .............. script e passo a passo do ranking online (veja ranking/COMO-CONFIGURAR.md)
 
-Opção 1 - Página própria (recomendado)
-  Envie o index.html para uma pasta do site, por exemplo:
-    www.lojaslutex.com.br/jogo/index.html
-  O jogo fica disponível em www.lojaslutex.com.br/jogo
-
-Opção 2 - Dentro de uma página que já existe
-  Depois de fazer a opção 1, cole este código onde o jogo deve aparecer:
-
-    <iframe src="/jogo/" title="Torre de Toalhas - Lutex"
-            style="width:100%;max-width:480px;height:720px;border:0;display:block;margin:0 auto">
-    </iframe>
-
-Plataformas de e-commerce (VTEX, Nuvemshop, Tray, Shopify etc.) normalmente
-não aceitam subir um arquivo .html solto. Nesses casos, peça para quem cuida
-da loja hospedar o index.html (pode ser num subdomínio, como jogo.lojaslutex.com.br)
-e use a opção 2 para mostrar o jogo dentro da loja.
-
-OBSERVAÇÕES
------------
+COMO FUNCIONA
+-------------
+- Peças de parceiros aparecem de tempos em tempos, pausam o jogo com o destaque
+  da marca e valem 2 pontos. Elas não são cortadas ao cair.
+- O ranking aparece antes e depois de cada partida. Sem a RANKING_URL configurada,
+  ele fica salvo só no aparelho de cada jogador.
+- O recorde pessoal fica salvo no navegador de cada jogador.
 - As fontes (Fredoka e Nunito Sans) vêm do Google Fonts. Sem internet, o jogo
   usa fontes do sistema e continua funcionando.
-- O recorde fica salvo no navegador de cada jogador.
-- Os arquivos lutex-logo-*.png são só cópias do logo recortado, caso precisem.
