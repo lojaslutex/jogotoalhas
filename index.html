@@ -340,7 +340,8 @@ const PARTNERS = [
   const FLOOR = 34;          // floor band height (world units)
   const START_W = 220;       // starting piece width
   const BASE_H = 64;
-  const SPECIAL = { h: 42, cm: 6, points: 2, minW: 170, maxW: 240 };
+  // Partner pieces: one every `every` stacked items; each brand at most once per game, in random order
+  const SPECIAL = { h: 42, cm: 6, points: 2, minW: 170, maxW: 240, every: 20 };
   const RANK_SIZE = 10;
 
   const TYPES = {
@@ -446,7 +447,7 @@ const PARTNERS = [
     topY = BASE_H; falling = []; cam = 0; camT = 0;
     pieces = 0; points = 0; combo = 0; perfects = 0; heightCm = 0; lastColor = null; level = 0;
     partnerQueue = shuffle(PARTNERS.map((_, i) => i));
-    nextSpecialAt = 3 + rand(3);
+    nextSpecialAt = SPECIAL.every;
     current = null;
     $('phase').textContent = levelLabel(0);
     updateHud();
@@ -457,12 +458,11 @@ const PARTNERS = [
     let w = top.w;
     const dir = pieces % 2 ? -1 : 1;
     let piece;
-    if (PARTNERS.length && pieces >= nextSpecialAt) {
+    if (partnerQueue.length && pieces >= nextSpecialAt) {
       // partner pieces are a bit bigger so the logo reads, and they are never cut
       w = Math.min(SPECIAL.maxW, Math.max(top.w + 40, SPECIAL.minW));
-      if (!partnerQueue.length) partnerQueue = shuffle(PARTNERS.map((_, i) => i));
       piece = { special: true, partner: partnerQueue.shift(), type: 'special', h: SPECIAL.h, color: '#FFFFFF' };
-      nextSpecialAt = pieces + 6 + rand(4);
+      nextSpecialAt = pieces + SPECIAL.every;
     } else {
       const type = typeFor(pieces);
       piece = { type, h: TYPES[type].h, color: pickColor(type) };

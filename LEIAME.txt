@@ -14,8 +14,9 @@ ARQUIVOS
 
 COMO FUNCIONA
 -------------
-- Peças de parceiros aparecem de tempos em tempos, pausam o jogo com o destaque
-  da marca e valem 2 pontos. Elas não são cortadas ao cair.
+- Peças de parceiros aparecem a cada 20 peças empilhadas, cada marca uma única vez
+  por partida e em ordem aleatória. Elas pausam o jogo com o destaque da marca,
+  valem 2 pontos e não são cortadas ao cair.
 - O ranking aparece antes e depois de cada partida. Sem a RANKING_URL configurada,
   ele fica salvo só no aparelho de cada jogador.
 - O recorde pessoal fica salvo no navegador de cada jogador.
