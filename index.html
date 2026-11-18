@@ -290,9 +290,6 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block
         <h1>Torre de Toalhas</h1>
         <p>Toque na tela para soltar cada peça em cima da pilha. O que ficar para fora é cortado, então capriche no alinhamento.</p>
       </div>
-      <ul class="levels" aria-label="Níveis">
-        <li>Toalhas</li><li>Lençóis</li><li>Cobertores</li><li>Enxoval completo</li><li class="gold">Encaixes perfeitos seguidos: +2, +3, +4…</li><li class="gold">Peças de parceiros valem 2×</li>
-      </ul>
       <div class="gift">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
         <p><b>Tem presente especial no fim!</b> Termine a partida, coloque seu nome no ranking e descubra.</p>
@@ -383,7 +380,7 @@ const PARTNERS = [
   const START_W = 220;       // starting piece width
   const BASE_H = 64;
   // Partner pieces: one every `every` stacked items; each brand at most once per game, in random order
-  const SPECIAL = { h: 42, cm: 6, points: 2, minW: 170, maxW: 240, every: 20 };
+  const SPECIAL = { h: 42, cm: 6, points: 2, minW: 170, maxW: 240, every: 10 };
   const RANK_SIZE = 10;
 
   const TYPES = {
